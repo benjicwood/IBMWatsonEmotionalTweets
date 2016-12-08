@@ -1,14 +1,17 @@
 const express = require('express');
 const app = express();
+// const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+// const toneAnalyzer = new ToneAnalyzerV3({/*...*/});
 
 const tweets = require('./src/fetchtweets');
+const watson = require('./src/watson');
 
 app.get('/', function (request, response) {
   response.status(200).json('hi');
 });
 
-app.get('/api/tweets/escapehere', function (request, response) {
-  tweets(request.params.handle, function (error, data) {
+app.get('/api/tweets/:handle', function (request, response) {
+  tweets.timelineTweets(request.params.handle, function (error, data) {
     response.status(200).json({data});
   });
 });
