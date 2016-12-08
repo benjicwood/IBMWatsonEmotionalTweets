@@ -7,17 +7,29 @@ const T = new Twit({
   access_token_secret:  'OH2S45WX1EBsxAurPbw8r2LWsDgb2LdvgtdUrRXRlESkq'
 });
 
-timelineTweets = function (handle, callback) {
+const timelineTweets = function (handle, callback) {
   T.get('statuses/user_timeline', {screen_name: handle}, function (error, data, response) {
     console.log(data);
     return callback(null, data.map((tweet) => tweet.text));
   });
 };
+const tweetsByTopic = function (topic, callback) {
+  T.get('search/tweets', {q: topic, count: 10}, function (err, data, response) {
+    if (err) return callback(err);
 
-// retweetTweet = function (id, callback) {
-//   T.post('statuses/retweet/:id', {id: id}, function (error, data, response) {
-//     console.log(data);
-//   });
-// };
+    callback(null, data);
+  });
+};
+const tweetsByUser = function (screen_name, callback) {
+  T.get('followers/ids', { screen_name: 'tomcosman', count: 5 }, function (err, data, response) {
+    if (err) return callback(err);
+    callback(null, data);
+  });
+};
 
-module.exports = timelineTweets;
+
+module.exports = {
+  timelineTweets,
+  tweetsByTopic,
+  tweetsByUser
+};
