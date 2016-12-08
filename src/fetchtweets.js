@@ -16,7 +16,6 @@ const timelineTweets = function (handle, callback) {
 const tweetsByTopic = function (topic, callback) {
   T.get('search/tweets', {q: topic, count: 10}, function (err, data, response) {
     if (err) return callback(err);
-
     callback(null, data);
   });
 };
@@ -26,7 +25,6 @@ const tweetsByUser = function (screen_name, callback) {
     callback(null, data);
   });
 };
-
 
 module.exports = {
   timelineTweets,

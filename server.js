@@ -12,8 +12,10 @@ app.get('/', function (request, response) {
 
 app.get('/api/tweets/:handle', function (request, response) {
   tweets.timelineTweets(request.params.handle, function (error, data) {
-    response.status(200).json({data});
+    watson(data, function (error, data) {
+      response.status(200).json({data});
   });
+});
 });
 
 app.get('/api/tweets/topics/:topic', function (req, res, next) {
@@ -29,6 +31,12 @@ app.get('/api/followers/:screen_name', function (req, res, next) {
     res.json({tweets: data});
   });
 });
+
+// app.get('/api/tweets/:handle/watson', function (request, response) {
+//   watson.watsoninfo(request.params.handle, function (error, data) {
+//     response.status(200).json({data});
+//   });
+// });
 
 app.listen(4000, function () {
   console.log('listening on port 4000');
