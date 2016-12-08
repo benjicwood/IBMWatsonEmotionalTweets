@@ -13,6 +13,12 @@ app.get('/api/tweets/escapehere', function (request, response) {
   });
 });
 
+// app.put('/api/tweets/retweet/:id', function (request, response) {
+//   tweets(request.params.id, function (error, data) {
+//     response.status(200).json({data})
+//   });
+// });
+
 app.listen(4000, function () {
   console.log('listening on port 4000');
 });

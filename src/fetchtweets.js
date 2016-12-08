@@ -7,9 +7,17 @@ const T = new Twit({
   access_token_secret:  'OH2S45WX1EBsxAurPbw8r2LWsDgb2LdvgtdUrRXRlESkq'
 });
 
-module.exports = function (handle, callback) {
+timelineTweets = function (handle, callback) {
   T.get('statuses/user_timeline', {screen_name: handle}, function (error, data, response) {
     console.log(data);
     return callback(null, data.map((tweet) => tweet.text));
   });
 };
+
+// retweetTweet = function (id, callback) {
+//   T.post('statuses/retweet/:id', {id: id}, function (error, data, response) {
+//     console.log(data);
+//   });
+// };
+
+module.exports = timelineTweets;
