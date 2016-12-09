@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const play = require('play');
 
 const tweets = require('./src/fetchtweets');
 const watson = require('./src/watson');
 const translator = require('./src/translator');
+const toSpeech = require('./src/toSpeech.js');
 
 app.get('/', function (request, response) {
   response.status(200).json('hi');
@@ -22,8 +24,9 @@ app.get('/api/tweets/translate/:handle', function (request, response) {
 app.get('/api/tweets/:handle', function (request, response) {
   tweets.timelineTweets(request.params.handle, function (error, data) {
     if (error) { return response.status(500); }
-    watson(data, function (error, data) {
+    (data, function (error, data) {
       if (error) { return response.status(500); }
+      toSpeech(data);
       response.status(200).json({data});
     });
   });

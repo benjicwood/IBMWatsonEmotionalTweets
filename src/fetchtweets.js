@@ -1,4 +1,6 @@
 const Twit = require('twit');
+const toSpeech = require('./toSpeech.js');
+
 
 const T = new Twit({
   consumer_key:         'qvCDlWSOENwvFloBfgHDgtkp3',

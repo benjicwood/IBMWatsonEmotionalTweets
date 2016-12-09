@@ -1,4 +1,6 @@
+
 const LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
+
 
 const language_translator = new LanguageTranslatorV2({
  "url": "https://gateway.watsonplatform.net/language-translator/api",
