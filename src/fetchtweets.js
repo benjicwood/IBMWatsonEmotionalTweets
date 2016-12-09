@@ -9,7 +9,6 @@ const T = new Twit({
 
 const timelineTweets = function (handle, callback) {
   T.get('statuses/user_timeline', {screen_name: handle}, function (error, data, response) {
-    console.log(data);
     return callback(null, data.map((tweet) => tweet.text));
   });
 };

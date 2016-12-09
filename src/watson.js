@@ -11,20 +11,13 @@ function watson (data, callback) {
     text: data,
     consumption_preferences: true
   },
-  function (err, response) {
-    if (err)
-      console.log('error:', err);
+  function (error, response) {
+  if (error)
+    console.log('error:', error);
     else
-     console.log(JSON.stringify(response, null, 2));
-     callback(null, response);
+    console.log(JSON.stringify(response, null, 2));
+    callback(null, response);
    });
 }
-
-// const watsoninfo = function (handle, callback) {
-//   personality_insights.get('statuses/user_timeline', {screen_name: handle}, function (error, data, response) {
-//     console.log(data);
-//     return callback(null, data);
-//   });
-// };
 
 module.exports = watson;
