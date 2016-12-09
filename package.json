@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/benjicwood/October-wk08-emotional-tweets#readme",
   "dependencies": {
+    "chart.js": "^2.4.0",
     "express": "^4.14.0",
     "twit": "^2.2.5",
     "watson-developer-cloud": "^2.11.1"

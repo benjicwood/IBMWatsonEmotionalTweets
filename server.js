@@ -3,9 +3,20 @@ const app = express();
 
 const tweets = require('./src/fetchtweets');
 const watson = require('./src/watson');
+const translator = require('./src/translator');
 
 app.get('/', function (request, response) {
   response.status(200).json('hi');
+});
+
+app.get('/api/tweets/translate/:handle', function (request, response) {
+  tweets.timelineTweets(request.params.handle, function (error, data) {
+    if (error) { return response.status(500); }
+    translator.translate(data, function (error, data) {
+      if (error) { return response.status(500); }
+      response.status(200).json({data});
+    });
+  });
 });
 
 app.get('/api/tweets/:handle', function (request, response) {

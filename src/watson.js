@@ -1,9 +1,9 @@
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
 const personality_insights = new PersonalityInsightsV3({
- username: '140c48c0-4e5b-4b90-a440-a4cf711465e7',
- password: 'dZaHbgi83vUc',
- version_date: '2016-10-19'
+  username: '140c48c0-4e5b-4b90-a440-a4cf711465e7',
+  password: 'dZaHbgi83vUc',
+  version_date: '2016-10-19'
 });
 
 function watson (data, callback) {
